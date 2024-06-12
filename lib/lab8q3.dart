@@ -42,11 +42,11 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           // 7 rows of different colors
 
-           Container(
-             height: 100,
-              color: Colors.white,
-              width: double.infinity,
-            ),
+          Container(
+            height: 100,
+            color: Colors.white,
+            width: double.infinity,
+          ),
 
           Container(
             height: 100,
@@ -54,11 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
             width: double.infinity,
           ),
 
-      Container(
-        height: 100,
-        color: Colors.green,
-        width: double.infinity,
-      ),
+          Container(
+            height: 100,
+            color: Colors.green,
+            width: double.infinity,
+          ),
           Container(
             height: 100,
             color: Colors.blue,

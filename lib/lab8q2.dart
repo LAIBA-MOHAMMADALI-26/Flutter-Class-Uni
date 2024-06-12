@@ -40,46 +40,58 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20.0), // Add horizontal margins
+          padding: EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                "Welcome to Rows and Column Lab\n"
-                    "This is a simple flutter app\n"
-                    "Explore the power of rows and columns",
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 20), // Add space between text and buttons
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () {
-                      print('Next button pressed');
-                    },
+                    onPressed: () {},
+                    child: Text(
+                      'Button 1',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
-                    child: const Text(
-                      'Next',
-                      style: TextStyle(fontSize: 20),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      print('Back button pressed');
-                    },
+                    onPressed: () {},
+                    child: Text(
+                      'Button 2',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                     ),
-                    child: const Text(
-                      'Back',
-                      style: TextStyle(fontSize: 20),
-                      textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'TextField 1',
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10.0), // Add spacing between text fields
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'TextField 2',
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -88,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+
     );
   }
 }
