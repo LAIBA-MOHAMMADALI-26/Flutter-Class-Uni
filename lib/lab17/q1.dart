@@ -1,10 +1,6 @@
-
-
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -34,18 +30,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var nameController=TextEditingController();
-  static const String KEYNAME="name";
-  var NameValue="no value saved";
+  var numberController = TextEditingController();
+  static const String KEYNUMBER = "number";
+  var numberValue = "No Value Saved";
 
-
-
-@override
+  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getValue();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,41 +53,39 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           TextField(
-controller: nameController,
+            controller: numberController,
+            keyboardType: TextInputType.number,
             decoration: InputDecoration(
-
-              label: Text('name'),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(21)
-              )
-            ),
+                label: Text('Number'),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(21))),
           ),
           SizedBox(
             height: 11,
           ),
-          ElevatedButton(onPressed: () async{
-var name=nameController.text.toString();
-var prefs= await SharedPreferences.getInstance();
-prefs.setString(KEYNAME, nameController.text.toString());
-          },
-              child: Text("Save")),
-          SizedBox(
-            height:11,
+          ElevatedButton(
+            onPressed: () async {
+              var number = int.tryParse(numberController.text);
+              if (number != null) {
+                var prefs = await SharedPreferences.getInstance();
+                prefs.setInt(KEYNUMBER, number);
+              }
+            },
+            child: Text("Save"),
           ),
-          Text(NameValue)
-
-
+          SizedBox(
+            height: 11,
+          ),
+          Text(numberValue),
         ],
       ),
     );
   }
 
   void getValue() async {
-   var prefs=await SharedPreferences.getInstance();
-   var getName=prefs.getString(KEYNAME);
-   NameValue=getName ?? "No Value Saved";
-setState(() {
-
-});
+    var prefs = await SharedPreferences.getInstance();
+    var getNumber = prefs.getInt(KEYNUMBER);
+    numberValue = getNumber?.toString() ?? "No Value Saved";
+    setState(() {});
   }
 }

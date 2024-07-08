@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -59,22 +59,22 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           TextField(
-controller: nameController,
+            controller: nameController,
             decoration: InputDecoration(
 
-              label: Text('name'),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(21)
-              )
+                label: Text('name'),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(21)
+                )
             ),
           ),
           SizedBox(
             height: 11,
           ),
           ElevatedButton(onPressed: () async{
-var name=nameController.text.toString();
-var prefs= await SharedPreferences.getInstance();
-prefs.setString(KEYNAME, nameController.text.toString());
+            var name=nameController.text.toString();
+            var prefs= await SharedPreferences.getInstance();
+            prefs.setString(KEYNAME, nameController.text.toString());
           },
               child: Text("Save")),
           SizedBox(
@@ -89,11 +89,11 @@ prefs.setString(KEYNAME, nameController.text.toString());
   }
 
   void getValue() async {
-   var prefs=await SharedPreferences.getInstance();
-   var getName=prefs.getString(KEYNAME);
-   NameValue=getName ?? "No Value Saved";
-setState(() {
+    var prefs=await SharedPreferences.getInstance();
+    var getName=prefs.getString(KEYNAME);
+    NameValue=getName ?? "No Value Saved";
+    setState(() {
 
-});
+    });
   }
 }
